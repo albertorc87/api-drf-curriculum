@@ -1,7 +1,6 @@
-env/
 .vscode/
-.sass-cache/
 *.log
 *.pot
 *.pyc
 .envs
+media/

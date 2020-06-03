@@ -9,5 +9,9 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['username']
 
     modified = models.DateTimeField(auto_now=True)
-    photo = models.ImageField(upload_to='users')
-    extract = RichTextField()
+    photo = models.ImageField(null=True, upload_to='users')
+    extract = RichTextField(null=True)
+    phone = models.CharField(null=True, max_length=15)
+    city = models.CharField(null=True, max_length=255)
+    country = models.CharField(null=True, max_length=255)
+    is_recruiter = models.BooleanField(default=False)
