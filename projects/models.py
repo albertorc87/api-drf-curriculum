@@ -4,8 +4,8 @@ from users.models import User
 # django-ckeditor
 from ckeditor.fields import RichTextField
 
-class Proyect(models.Model):
-    """Proyect model."""
+class Project(models.Model):
+    """Project model."""
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField()
@@ -15,5 +15,5 @@ class Proyect(models.Model):
 
 
     def __str__(self):
-        """Return proyect title and first_name and last_name."""
+        """Return Project title and first_name and last_name."""
         return f'{self.user.first_name} {self.user.last_name} | {self.title}'

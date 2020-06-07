@@ -8,16 +8,16 @@ from rest_framework.permissions import IsAuthenticated
 from users.permissions import IsStandardUser
 
 # Serializers
-from education.serializers import (EducationModelSerializer, EducationSerializer)
+from projects.serializers import (ProjectModelSerializer, ProjectSerializer)
 
 # Models
-from education.models import Education
+from projects.models import Project
 
-class EducationViewSet(mixins.ListModelMixin,
+class ProjectViewSet(mixins.ListModelMixin,
                         mixins.CreateModelMixin,
                         viewsets.GenericViewSet):
 
-    serializer_class = EducationModelSerializer
+    serializer_class = ProjectModelSerializer
 
     def get_permissions(self):
         permission_classes = [IsAuthenticated, IsStandardUser]
@@ -25,15 +25,15 @@ class EducationViewSet(mixins.ListModelMixin,
 
 
     def get_queryset(self):
-        """Restrict list to only user Education."""
-        queryset = Education.objects.filter(user=self.request.user)
+        """Restrict list to only user Project."""
+        queryset = Project.objects.filter(user=self.request.user)
         return queryset
 
         
     def create(self, request, *args, **kwargs):
-        serializer = EducationSerializer(data=request.data, context={"request": self.request})
+        serializer = ProjectSerializer(data=request.data, context={"request": self.request})
         serializer.is_valid(raise_exception=True)
         exp = serializer.save()
-        data = EducationModelSerializer(exp).data
+        data = ProjectModelSerializer(exp).data
         return Response(data, status=status.HTTP_201_CREATED)
     

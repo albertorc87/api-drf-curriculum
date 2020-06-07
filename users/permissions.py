@@ -8,7 +8,7 @@ from users.models import User
 
 
 class IsStandardUser(BasePermission):
-    """Allow access to create experience, extras and proyects."""
+    """Allow access to create experience, extras and projects."""
 
     def has_permission(self, request, view):
 

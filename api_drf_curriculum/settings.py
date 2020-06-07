@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'users',
     'experiences',
-    'proyects',
+    'projects',
     'education',
     'extras',
     'rest_framework.authtoken'
