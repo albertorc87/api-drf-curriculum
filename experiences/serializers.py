@@ -29,12 +29,5 @@ class ExperienceSerializer(serializers.Serializer):
 
     def create(self, data):
 
-        exp = Experience.objects.create(
-            user=data['user'],
-            date_ini=data['date_ini'],
-            date_end=data['date_end'],
-            company=data['company'],
-            description=data['description'],
-        )
-
+        exp = Experience.objects.create(**data)
         return exp

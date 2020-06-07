@@ -5,18 +5,29 @@ from rest_framework.response import Response
 
 # Permissions
 from rest_framework.permissions import IsAuthenticated
+from users.permissions import IsStandardUser
 
-#Serializers
+# Serializers
 from experiences.serializers import (ExperienceModelSerializer, ExperienceSerializer)
 
-class ExperienceViewSet(mixins.CreateModelMixin,
+# Models
+from experiences.models import Experience
+
+class ExperienceViewSet(mixins.ListModelMixin,
+                        mixins.CreateModelMixin,
                         viewsets.GenericViewSet):
 
     serializer_class = ExperienceModelSerializer
 
     def get_permissions(self):
-        permissions = [IsAuthenticated]
-        return [p() for p in permissions]
+        permission_classes = [IsAuthenticated, IsStandardUser]
+        return [permission() for permission in permission_classes]
+
+
+    def get_queryset(self):
+        """Restrict list to only user experience."""
+        queryset = Experience.objects.filter(user=self.request.user)
+        return queryset
 
         
     def create(self, request, *args, **kwargs):
