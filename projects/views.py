@@ -15,6 +15,8 @@ from projects.models import Project
 
 class ProjectViewSet(mixins.ListModelMixin,
                         mixins.CreateModelMixin,
+                        mixins.UpdateModelMixin,
+                        mixins.DestroyModelMixin,
                         viewsets.GenericViewSet):
 
     serializer_class = ProjectModelSerializer

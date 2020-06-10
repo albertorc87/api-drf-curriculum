@@ -15,6 +15,8 @@ from extras.models import Extra
 
 class ExtraViewSet(mixins.ListModelMixin,
                         mixins.CreateModelMixin,
+                        mixins.UpdateModelMixin,
+                        mixins.DestroyModelMixin,
                         viewsets.GenericViewSet):
 
     serializer_class = ExtraModelSerializer

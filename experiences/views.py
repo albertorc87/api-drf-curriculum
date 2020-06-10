@@ -15,6 +15,8 @@ from experiences.models import Experience
 
 class ExperienceViewSet(mixins.ListModelMixin,
                         mixins.CreateModelMixin,
+                        mixins.UpdateModelMixin,
+                        mixins.DestroyModelMixin,
                         viewsets.GenericViewSet):
 
     serializer_class = ExperienceModelSerializer
