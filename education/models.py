@@ -7,7 +7,7 @@ from ckeditor.fields import RichTextField
 class Education(models.Model):
     """Education model."""
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='education')
     date_ini = models.DateTimeField()
     date_end = models.DateTimeField(null=True)
     title = models.CharField(max_length=255)

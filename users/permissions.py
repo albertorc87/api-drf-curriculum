@@ -20,3 +20,18 @@ class IsStandardUser(BasePermission):
         except User.DoesNotExist:
             return False
         return True
+
+
+class IsRecruiterUser(BasePermission):
+    """Allow access to search curriculums."""
+
+    def has_permission(self, request, view):
+
+        try:
+            user = User.objects.get(
+                email=request.user,
+                is_recruiter=True
+            )
+        except User.DoesNotExist:
+            return False
+        return True

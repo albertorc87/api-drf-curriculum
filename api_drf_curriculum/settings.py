@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'projects',
     'education',
     'extras',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'search'
 ]
 
 MIDDLEWARE = [
